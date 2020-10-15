@@ -1,11 +1,9 @@
 package com.bonkonet.BonkonetApp.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "client")
 public class CompteCourant{
     public Integer getId() {
         return id;
