@@ -1,11 +1,47 @@
+package com.bonkonet.BonkonetApp.Entity;
+
+import javax.persistence.Entity;
+
 @Entity
-class CompteEpargne {
+public class CompteEpargne {
 
-    String numero;
+    public String getNumero() {
+        return numero;
+    }
 
-    String intitule;
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
 
-    Double solde;
+    public String getIntitule() {
+        return intitule;
+    }
 
-    Double tauxInteret;
+    public void setIntitule(String intitule) {
+        this.intitule = intitule;
+    }
+
+    public Double getSolde() {
+        return solde;
+    }
+
+    public void setSolde(Double solde) {
+        this.solde = solde;
+    }
+
+    public Double getTauxInteret() {
+        return tauxInteret;
+    }
+
+    public void setTauxInteret(Double tauxInteret) {
+        this.tauxInteret = tauxInteret;
+    }
+
+    private String numero;
+
+    private String intitule;
+
+    private Double solde;
+
+    private Double tauxInteret;
 }
