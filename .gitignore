@@ -351,3 +351,7 @@ MigrationBackup/
 
 # Intelij folder
 .idea/
+
+.metadata/
+
+target/
