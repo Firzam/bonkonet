@@ -84,7 +84,7 @@ public class ClientDAO{
      * @param client
      */
     public void deleteClient(Client client){
-        entityManager.delete(client);
+        entityManager.remove(client);
     }
     
 }

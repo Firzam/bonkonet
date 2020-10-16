@@ -59,6 +59,6 @@ public class ClientService {
 
     @Transactional
     private void deleteClient(Client client){
-        clientDAO.delete(client);
+        clientDAO.deleteClient(client);
     }
 }

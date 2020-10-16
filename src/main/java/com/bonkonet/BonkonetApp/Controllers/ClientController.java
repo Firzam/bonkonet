@@ -32,9 +32,9 @@ public class ClientController {
         return service.updateClient(client);
     }
 
-    @DeleteMapping("/deleteClient")
-    public ResponseEntity<Void> deleteClientById(@RequestBody (required = true) Integer id){
-        return service.deleteClient(id);
+    @DeleteMapping("/deleteClientById/{id}")
+    public ResponseEntity<Void> deleteClientById(@PathVariable("id") Integer id){
+        return service.deleteClientById(id);
     }
     
 }
