@@ -22,8 +22,7 @@ public class CompteEpargne{
     @Column(name = "taux_interet")
     private Double tauxInteret;
 
-    @JsonIgnore
-    @Column(name = "id_client")
+    @Column(name = "id_client", insertable = true, updatable = true)
     private Integer idClient;
 
     @JsonIgnore
@@ -71,6 +70,7 @@ public class CompteEpargne{
         this.tauxInteret = tauxInteret;
     }
 
+    @JsonIgnore
     public Integer getIdClient() {
         return idClient;
     }
@@ -79,6 +79,7 @@ public class CompteEpargne{
         this.idClient = idClient;
     }
 
+    @JsonIgnore
     public Client getClient() {
         return client;
     }

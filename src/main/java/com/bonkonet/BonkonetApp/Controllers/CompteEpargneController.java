@@ -24,6 +24,7 @@ public class CompteEpargneController {
 
     @PostMapping("/createCompte")
     public void createCompte(@RequestBody(required = true) CompteEpargne compteEpargne){
+        if(compteEpargne.getIdClient() == null) System.out.println("nul nul nul pas de valeur");
         service.createCompte(compteEpargne);
     }
 

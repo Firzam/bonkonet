@@ -22,7 +22,6 @@ public class CompteCourant {
     @Column(name = "montant_decouvert_autorise")
     private Double montantDecouvertAutorise;
 
-    @JsonIgnore
     @Column(name = "id_client")
     private Integer idClient;
 
@@ -71,6 +70,7 @@ public class CompteCourant {
         this.montantDecouvertAutorise = montantDecouvertAutorise;
     }
 
+    @JsonIgnore
     public Integer getIdClient() {
         return idClient;
     }
@@ -79,6 +79,7 @@ public class CompteCourant {
         this.idClient = idClient;
     }
 
+    @JsonIgnore
     public Client getClient() {
         return client;
     }
