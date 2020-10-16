@@ -1,9 +1,32 @@
 package com.bonkonet.BonkonetApp.Entity;
+import com.sun.istack.Nullable;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "client")
+@Table(name="client")
 public class Client {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    private String identifiant;
+
+    private String nom;
+
+    private String prenom;
+
+    @OneToMany(mappedBy = "client")
+    @Nullable
+    private List<CompteEpargne> compteEpargne;
+
+    @OneToMany(mappedBy = "client")
+    @Nullable
+    private List<CompteCourant> compteCourant;
+
+
     public Integer getId() {
         return id;
     }
@@ -11,10 +34,6 @@ public class Client {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
 
     public String getIdentifiant() {
         return identifiant;
@@ -40,33 +59,19 @@ public class Client {
         this.prenom = prenom;
     }
 
-    public CompteCourant getCompteCourant() {
-        return compteCourant;
-    }
-
-    public void setCompteCourant(CompteCourant compteCourant) {
-        this.compteCourant = compteCourant;
-    }
-
-    public CompteEpargne getCompteEpargne() {
+    public List<CompteEpargne> getCompteEpargne() {
         return compteEpargne;
     }
 
-    public void setCompteEpargne(CompteEpargne compteEpargne) {
+    public void setCompteEpargne(List<CompteEpargne> compteEpargne) {
         this.compteEpargne = compteEpargne;
     }
 
-    private String identifiant;
+    public List<CompteCourant> getCompteCourant() {
+        return compteCourant;
+    }
 
-    private String nom;
-
-    private String prenom;
-
-    @OneToOne
-    @JoinColumn(name = "id_courant")
-    private CompteCourant compteCourant;
-
-    @OneToOne
-    @JoinColumn(name = "id_epargne")
-    private CompteEpargne compteEpargne;
+    public void setCompteCourant(List<CompteCourant> compteCourant) {
+        this.compteCourant = compteCourant;
+    }
 }

@@ -22,7 +22,7 @@ public class CompteEpargneController {
         return service.getCompteByNumero(numero);
     }
 
-    @PostMapping("/epargneCompte")
+    @PostMapping("/createCompte")
     public void createCompte(@RequestBody(required = true) CompteEpargne compteEpargne){
         service.createCompte(compteEpargne);
     }

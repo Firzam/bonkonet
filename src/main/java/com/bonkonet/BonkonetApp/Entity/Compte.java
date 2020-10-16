@@ -1,8 +1,8 @@
 package com.bonkonet.BonkonetApp.Entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 public class Compte {
 
@@ -15,6 +15,11 @@ public class Compte {
     private String intitule;
 
     private Double solde;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_client")
+    private Client client;
 
     public Integer getId() {
         return id;
