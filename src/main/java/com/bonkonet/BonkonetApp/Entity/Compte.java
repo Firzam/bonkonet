@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
-public class Compte {
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Compte {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,9 +18,12 @@ public class Compte {
 
     private Double solde;
 
+    @Column(name = "id_client")
+    private Integer idClient;
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_client")
+    @JoinColumn(name="id_client", insertable = false, updatable = false)
     private Client client;
 
     public Integer getId() {
@@ -51,5 +56,23 @@ public class Compte {
 
     public void setSolde(Double solde) {
         this.solde = solde;
+    }
+
+    @JsonIgnore
+    public Integer getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
+    }
+
+    @JsonIgnore
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
