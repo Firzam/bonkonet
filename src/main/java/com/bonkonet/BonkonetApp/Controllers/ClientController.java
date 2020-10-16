@@ -2,10 +2,11 @@ package com.bonkonet.BonkonetApp.Controllers;
 
 import com.bonkonet.BonkonetApp.Entity.Client;
 import com.bonkonet.BonkonetApp.Services.ClientService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +21,20 @@ public class ClientController {
         return service.showClient();
     }
 
+    @PostMapping("/createClient")
+    public void createClient(@RequestBody(required = true) Client client){
+        service.createClient(client);
+    }
+
+    @PostMapping("/updateClient")
+    @ResponseBody
+    public ResponseEntity<Void> updateClient(@RequestBody(required = true) Client client){
+        return service.updateClient(client);
+    }
+
+    @DeleteMapping("/deleteClient")
+    public ResponseEntity<Void> deleteClientById(@RequestBody (required = true) Integer id){
+        return service.deleteClient(id);
+    }
     
 }
