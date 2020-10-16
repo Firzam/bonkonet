@@ -1,6 +1,7 @@
 package com.bonkonet.BonkonetApp.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -18,12 +19,12 @@ public class CompteEpargne{
 
     private Double solde;
 
-    @Column(name = "tauxInteret")
+    @Column(name = "taux_interet")
     private Double tauxInteret;
 
     @JsonIgnore
     @Column(name = "id_client")
-    private Integer id_client;
+    private Integer idClient;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
@@ -70,12 +71,12 @@ public class CompteEpargne{
         this.tauxInteret = tauxInteret;
     }
 
-    public Integer getId_client() {
-        return id_client;
+    public Integer getIdClient() {
+        return idClient;
     }
 
-    public void setId_client(Integer id_client) {
-        this.id_client = id_client;
+    public void setIdClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
     public Client getClient() {

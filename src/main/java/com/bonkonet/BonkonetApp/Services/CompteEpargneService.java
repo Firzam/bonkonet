@@ -56,6 +56,7 @@ public class CompteEpargneService {
         epargneBase.setNumero(compteEpargne.getNumero());
         epargneBase.setIntitule(compteEpargne.getIntitule());
         epargneBase.setSolde(compteEpargne.getSolde());
+        epargneBase.setIdClient(compteEpargne.getIdClient());
         compteDAO.updateCompte(epargneBase);
     }
 

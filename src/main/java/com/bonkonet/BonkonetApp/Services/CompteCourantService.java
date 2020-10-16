@@ -56,6 +56,7 @@ public class CompteCourantService {
         courantBase.setNumero(compteCourant.getNumero());
         courantBase.setIntitule(compteCourant.getIntitule());
         courantBase.setSolde(compteCourant.getSolde());
+        courantBase.setIdClient(compteCourant.getIdClient());
         compteDAO.updateCompte(courantBase);
     }
 
