@@ -63,7 +63,20 @@ public class CompteEpargeServiceTest {
         Double montant = 250.0;
 
         //When
-        compteEpargneService.debiter(montant, compteEpargeTest);       
+        compteEpargeTest = compteEpargneService.debiter(montant, compteEpargeTest, null);       
+    }
+
+    @Test
+    public void shoudCalculateNewSolde_WhenDebiter() throws NegativeSolde{
+        //Given
+        Double montant = 250.0;
+        compteEpargeTest = createCompteEpargne(1, "12AEZ32", "Epargne Voyage", 251.00,23.00, 1);
+
+        //When
+        compteEpargeTest = compteEpargneService.debiter(montant, compteEpargeTest, null);
+        
+        //Then
+        assertEquals(compteEpargeTest.getSolde(), (Double) 1.0);
     }
 
     private CompteEpargne createCompteEpargne(Integer id, String numero, String intitule, Double solde, Double tauxInteret, Integer idClient){
