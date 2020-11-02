@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 @Service
-public class CompteCourantService implements CompteService<CompteCourant>{
+public class CompteCourantService extends CompteService<CompteCourant>{
 
     private final CompteCourantDAO compteDAO;
     public CompteCourantService(CompteCourantDAO compteDAO){

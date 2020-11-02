@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import com.bonkonet.BonkonetApp.Entity.Exceptions.NegativeSolde;
 
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.assertEquals;
@@ -23,6 +24,9 @@ public class CompteEpargeServiceTest {
     @Mock
     CompteEpargneDAO compteEpargneDAO;
 
+    
+    CompteEpargne compteEpargeTest = createCompteEpargne(1, "12AEZ32", "Epargne Voyage", 123.00,23.00, 1);
+
     @Before
     public void init(){
         MockitoAnnotations.initMocks(this);
@@ -32,7 +36,6 @@ public class CompteEpargeServiceTest {
     @Test
     public void shouldSendAcceptedStatus_whenSuccessfullyUpdatingCompte(){
         //Given
-        CompteEpargne compteEpargeTest = createCompteEpargne(1, "12AEZ32", "Epargne Voyage", 123.00,23.00, 1);
         when(compteEpargneDAO.getCompteById(Mockito.any(Integer.class))).thenReturn(compteEpargeTest);
 
         //When
@@ -45,7 +48,6 @@ public class CompteEpargeServiceTest {
     @Test
     public void shouldSendNotAcceptedStatus_whenUnsuccessfullyUpdatingCompte(){
         //Given
-        CompteEpargne compteEpargeTest = createCompteEpargne(1, "12AEZ32", "Epargne Voyage", 123.00,23.00, 1);
         when(compteEpargneDAO.getCompteById(Mockito.any(Integer.class))).thenReturn(null);
 
         //When
@@ -53,6 +55,15 @@ public class CompteEpargeServiceTest {
 
         //Then
         assertEquals(new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE), response);
+    }
+
+    @Test
+    public void shoudThrowException_WhenDebiterGoNegative() throws NegativeSolde{
+        //Given
+        Double montant = 250.0;
+
+        //When
+        compteEpargneService.debiter(montant, compteEpargeTest);       
     }
 
     private CompteEpargne createCompteEpargne(Integer id, String numero, String intitule, Double solde, Double tauxInteret, Integer idClient){
