@@ -42,6 +42,19 @@ public class CompteEpargeServiceTest {
         assertEquals(new ResponseEntity<>(HttpStatus.ACCEPTED), response);
     }
 
+    @Test
+    public void shouldSendNotAcceptedStatus_whenUnsuccessfullyUpdatingCompte(){
+        //Given
+        CompteEpargne compteEpargeTest = createCompteEpargne(1, "12AEZ32", "Epargne Voyage", 123.00,23.00, 1);
+        when(compteEpargneDAO.getCompteById(Mockito.any(Integer.class))).thenReturn(null);
+
+        //When
+        ResponseEntity<Void> response = compteEpargneService.updateCompte(compteEpargeTest);
+
+        //Then
+        assertEquals(new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE), response);
+    }
+
     private CompteEpargne createCompteEpargne(Integer id, String numero, String intitule, Double solde, Double tauxInteret, Integer idClient){
         CompteEpargne ce = new CompteEpargne();
         ce.setId(id);
