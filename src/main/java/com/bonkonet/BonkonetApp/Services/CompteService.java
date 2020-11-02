@@ -1,6 +1,6 @@
 package com.bonkonet.BonkonetApp.Services;
 
-public CompteService<T> {
+public class CompteService<T> {
 
     public void debiter(Double montant, T compte) throws NegativeSolde{
         Double solde = compte.getSolde();
